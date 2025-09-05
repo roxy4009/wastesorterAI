@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Sorting AI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #406042;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #ffffff;
+            box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .upload-box {
+            background: #f2f3f7;
+            border: none;
+            border-radius: 10px;
+            box-shadow: inset 10px 10px 20px #d1d3d8, inset -10px -10px 20px #ffffff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f9f9f9;
+            border-radius: 20px;
+            color: #555;
+            box-shadow: 5px 5px 15px #d1d3d8, -5px -5px 15px #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .custom-file-label:hover {
+            background: #e0e0e0;
+        }
+
+        button {
+            background: #375a46;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px #d1d3d8, -5px -5px 15px #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .result-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 10px 10px 20px #d1d3d8, -10px -10px 20px #ffffff;
+            margin-top: 20px;
+        }
+
+        .result-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .result-card h2 {
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .result-card p {
+            color: #777;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            background: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            overflow: hidden;
+        }
+
+        .circular-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#4CAF50 calc(var(--progress) * 1%), #e0e0e0 0%);
+            z-index: 1;
+        }
+
+        .circular-progress span {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Waste Sorting AI</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="upload-box">
+                <label class="custom-file-label">
+                    Choose File
+                    <input type="file" name="file" required>
+                </label>
+            </div>
+            <button type="submit">Classify</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result-card">
+            <h2>{{ prediction }}</h2>
+            <div class="circular-progress" style="--progress: {{ confidence | round(0) / 100 }};">
+                <span>{{ confidence | round(0) }}%</span>
+            </div>
+            <p><strong>Carbon Footprint:</strong> {{ carbon_footprint }} kg CO₂</p>
+            <p><strong>Recyclability Suggestion:</strong></p>
+            <p>{{ suggestion }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

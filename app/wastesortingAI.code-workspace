@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "dataset-resized",
+			"path": "../../../Downloads/dataset-resized"
+		},
+		{
+			"name": "wastesorting",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

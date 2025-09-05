@@ -1,0 +1,8 @@
+Flask==2.3.3
+tensorflow==2.13.0
+numpy
+pillow
+opencv-python
+openai
+h5py
+matplotlib
