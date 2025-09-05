@@ -38,9 +38,11 @@ _(Additional classes can be added by retraining the model with new images.)_
 ## Running the project
 Due to GitHub’s file size limits, the trained model is hosted externally.
 👉 Download the model here https://drive.google.com/file/d/1nX7I3OLI_7v6Ic8clj24PSbJZgIA7MGL/view?usp=sharing&utm_source=chatgpt.com
-- After downloading, place the file into the models/ directory
-- export OPENAI_API_KEY=your_key_here in terminal
+After downloading, place the file into the models/ directory
+```bash
+- export OPENAI_API_KEY=your_key_here
 - pip install -r requirements.txt
 - python app.py
+```
 
 
