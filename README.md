@@ -16,12 +16,12 @@ _(Additional classes can be added by retraining the model with new images.)_
 
 ## Features
 
-- ✅ **Waste classification** using a custom-trained MobileNetV2 model (TensorFlow)
-- 🧠 **OpenAI-powered suggestions** for proper disposal instructions
-- 🌱 **Carbon footprint estimates** for each item class
-- 📷 **Image preprocessing and augmentation** for improved model performance
-- 📊 **Confidence scoring** with visualization
-- 🧪 Local web app built using **Flask**
+- **Waste classification** using a custom-trained MobileNetV2 model (TensorFlow)
+- **OpenAI-powered suggestions** for proper disposal instructions
+- **Carbon footprint estimates** for each item class
+- **Image preprocessing and augmentation** for improved model performance
+- **Confidence scoring** with visualization
+- Local web app built using **Flask**
 
 ---
 
